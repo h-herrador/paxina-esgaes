@@ -1,0 +1,37 @@
+baseURL = 'https://esgrima.hugoherrador.com/'
+languageCode = 'es-ES'
+title = 'ESCOLA GALEGA DE ESGRIMA'
+
+[markup]
+  [markup.highlight]
+    style="catppuccin-mocha"
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+
+[params]
+  math=false
+
+[[menus.main]]
+name = 'Inicio'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Espazos e horarios'
+pageRef = '/espazos-e-horarios'
+weight = 20
+
+[[menus.main]]
+name = 'Dirección técnica'
+pageRef = '/direccion'
+weight = 30
+
+[[menus.main]]
+name = 'Contacto'
+pageRef = '/contacto'
+weight = 40
