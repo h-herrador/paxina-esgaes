@@ -37,6 +37,42 @@ body, html {
   font-weight: bold; /* Pone el texto en negrita */
 }
 
+/* Menú hamburguesa */
+.menu-toggle {
+  display: none; /* Ocultamos el menú hamburguesa por defecto */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  background-color: white;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+}
+
+/* Estilo para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .nav-left {
+    display: none; /* Oculta los enlaces en pantallas pequeñas */
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar.active .nav-left {
+    display: flex; /* Muestra el menú cuando se activa */
+  }
+
+  .menu-toggle {
+    display: flex; /* Muestra el menú hamburguesa */
+  }
+
+  .nav-right {
+    display: none; /* Oculta los iconos sociales en pantallas pequeñas */
+  }
+}
+
 
 .nav-right {
   display: flex;
