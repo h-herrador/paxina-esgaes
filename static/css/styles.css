@@ -108,6 +108,7 @@ body, html {
 }
 
 
+
 /* Sección de héroe */
 .hero {
 height: 88vh; /* Ocupa toda la altura de la ventana */
@@ -151,10 +152,12 @@ animation: fade 15s infinite; /* Ciclo de animación */
 
 /* Primera imagen */
 .image1 {
-background-image: url('../images/logo-club.png'); /* Ruta de la primera imagen */
+background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
 background-size: 40%; /* Imagen al 40% de su tamaño original */
 animation-delay: 0s; /* Empieza inmediatamente */
 }
+
+
 
 /* Segunda imagen */
 .image2 {
@@ -178,6 +181,40 @@ filter: grayscale(100%);
   
   }
 
+
+  @media screen and (max-width: 768px) {
+/* Primera imagen */
+.image1 {
+  background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
+  background-size: 70%; /* Imagen al 40% de su tamaño original */
+  animation-delay: 0s; /* Empieza inmediatamente */
+  }
+  
+  
+  
+  /* Segunda imagen */
+  .image2 {
+  background-image: url('../images/movil-2.jpg'); /* Ruta de la segunda imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  animation-delay: 5s; /* Comienza cuando la primera está en el centro del ciclo */
+  filter: grayscale(100%);
+  
+  }
+  
+  /* Segunda imagen */
+  .image3 {
+    background-image: url('../images/movil-3.jpg'); /* Ruta de la segunda imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    animation-delay: 10s; /* Comienza cuando la primera está en el centro del ciclo */
+    filter: grayscale(100%);
+    
+    }
+  }
+  
 /* Animación de transición */
 @keyframes fade {
   0% {
@@ -213,7 +250,7 @@ filter: grayscale(100%);
   position: relative;
   width: 100%;
   height: 88vh;
-  background-image: url('../images/nenos.jpg');
+  background-image: url('../images/chaquetas.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -329,56 +366,6 @@ a {
   margin-bottom: 25px; /* Espacio adicional después de cada 2 elementos */
 }
 
-.form-contacto {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  text-align: left;
-}
-
-label {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #ffffff;
-  display: block;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  transition: border-color 0.3s;
-}
-
-input:focus {
-  border-color: #007bff; /* Color destacado en el foco */
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-/* Botón de Enviar */
-button[type="submit"] {
-  background-color: #007bff;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3; /* Color más oscuro al pasar el cursor */
-}
-
 .columnas {
   display: flex;
   justify-content: space-between;
@@ -433,30 +420,4 @@ footer p {
 .footer-img {
   height: 40px; /* Ajusta el tamaño de las imágenes */
   margin-left: 10px; /* Espacio entre las imágenes */
-}
-
-.mensaje-exito {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  padding: 15px;
-  background-color: #d4edda; /* Verde claro */
-  color: #155724; /* Verde oscuro */
-  border: 2px solid #c3e6cb;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.5s ease-in-out;
-}
-
-.mensaje-exito i {
-  font-size: 24px;
-  color: #28a745; /* Verde vibrante */
-}
-
-.mensaje-exito.fade-out {
-  opacity: 0;
 }
