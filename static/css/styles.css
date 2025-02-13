@@ -418,6 +418,7 @@ footer p {
 }
 
 .footer-img {
+  color: white;
   height: 40px; /* Ajusta el tamaño de las imágenes */
-  margin-left: 10px; /* Espacio entre las imágenes */
+  margin-left: 20px; /* Espacio entre las imágenes */
 }
