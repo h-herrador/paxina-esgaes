@@ -51,7 +51,6 @@ body, html {
   margin: 4px 0;
 }
 
-/* Estilo para pantallas pequeñas */
 @media screen and (max-width: 768px) {
   .nav-left {
     display: none; /* Oculta los enlaces en pantallas pequeñas */
@@ -67,11 +66,8 @@ body, html {
   .menu-toggle {
     display: flex; /* Muestra el menú hamburguesa */
   }
-
-  .nav-right {
-    display: none; /* Oculta los iconos sociales en pantallas pequeñas */
-  }
 }
+
 
 
 .nav-right {
@@ -152,8 +148,7 @@ animation: fade 15s infinite; /* Ciclo de animación */
 
 /* Primera imagen */
 .image1 {
-background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
-background-size: 40%; /* Imagen al 40% de su tamaño original */
+background-image: url('../images/fotofamilia.jpg'); /* Ruta de la primera imagen */
 animation-delay: 0s; /* Empieza inmediatamente */
 }
 
@@ -161,25 +156,20 @@ animation-delay: 0s; /* Empieza inmediatamente */
 
 /* Segunda imagen */
 .image2 {
-background-image: url('../images/portada-2.jpg'); /* Ruta de la segunda imagen */
-background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
-background-position: center; /* Centra la imagen */
-background-repeat: no-repeat; /* Evita que la imagen se repita */
-animation-delay: 5s; /* Comienza cuando la primera está en el centro del ciclo */
-filter: grayscale(100%);
-
-}
-
-/* Segunda imagen */
-.image3 {
-  background-image: url('../images/portada-3.jpg'); /* Ruta de la segunda imagen */
+  background-image: url('../images/brunoduarte.png'); /* Ruta de la segunda imagen */
   background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
-  animation-delay: 10s; /* Comienza cuando la primera está en el centro del ciclo */
-  filter: grayscale(100%);
-  
+  animation-delay: 5s; /* Comienza cuando la primera está en el centro del ciclo */
   }
+  
+  /* Segunda imagen */
+  
+  .image3 {
+    background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
+    background-size: 40%; /* Imagen al 40% de su tamaño original */
+    animation-delay: 10s; /* Empieza inmediatamente */
+    }
 
 
   @media screen and (max-width: 768px) {
@@ -260,7 +250,7 @@ filter: grayscale(100%);
   position: relative;
   width: 100%;
   height: 88vh;
-  background-image: url('../images/fotofamilia.jpg');
+  background-image: url('../images/nenos.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
