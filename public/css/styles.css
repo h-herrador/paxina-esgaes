@@ -143,12 +143,12 @@ background-size: cover; /* Ajusta la imagen al contenedor */
 background-position: center; /* Centra la imagen */
 background-repeat: no-repeat;
 opacity: 0; /* Inicialmente no visible */
-animation: fade 15s infinite; /* Ciclo de animación */
+animation: fade 20s infinite; /* Ciclo de animación */
 }
 
 /* Primera imagen */
 .image1 {
-background-image: url('../images/fotofamilia.jpg'); /* Ruta de la primera imagen */
+background-image: url('../images/banner-deputacion.png'); /* Ruta de la primera imagen */
 animation-delay: 0s; /* Empieza inmediatamente */
 }
 
@@ -156,20 +156,13 @@ animation-delay: 0s; /* Empieza inmediatamente */
 
 /* Segunda imagen */
 .image2 {
-  background-image: url('../images/brunoduarte.png'); /* Ruta de la segunda imagen */
+  background-image: url('../images/fotofamilia.jpg'); /* Ruta de la segunda imagen */
   background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
-  animation-delay: 5s; /* Comienza cuando la primera está en el centro del ciclo */
+  animation-delay: 10s; /* Comienza cuando la primera está en el centro del ciclo */
   }
   
-  /* Segunda imagen */
-  
-  .image3 {
-    background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
-    background-size: 40%; /* Imagen al 40% de su tamaño original */
-    animation-delay: 10s; /* Empieza inmediatamente */
-    }
 
 
   @media screen and (max-width: 768px) {
@@ -205,24 +198,17 @@ animation-delay: 0s; /* Empieza inmediatamente */
     }
   }
   
-/* Animación de transición */
-@keyframes fade {
-  0% {
-    opacity: 0;
+  @keyframes fade {
+    0% {
+      opacity: 1; /* Primera imagen visible */
+    }
+    50% {
+      opacity: 0; /* Primera imagen se desvanece */
+    }
+    100% {
+      opacity: 1; /* Vuelve a la primera imagen */
+    }
   }
-  10% {
-    opacity: 1;
-  }
-  30% {
-    opacity: 1;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 
 
 
