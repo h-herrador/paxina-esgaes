@@ -4,19 +4,29 @@ body, html {
   padding: 0;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden; /* Previene el scroll */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Barra de navegación */
 .navbar {
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 1); /* Fondo semitransparente */
-  padding: 15px 20px;  display: flex;
-  justify-content: space-between; /* Espaciado entre izquierda y derecha */
-  align-items: center; /* Centra verticalmente los elementos */
+  background-color: rgba(0, 0, 0, 1);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-shrink: 0; /* Evita que el navbar se encoja */
 }
 
 .nav-left {
-  display: flex; /* Alinea horizontalmente los enlaces */
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -34,12 +44,12 @@ body, html {
 }
 
 .nav-left li a:hover {
-  font-weight: bold; /* Pone el texto en negrita */
+  font-weight: bold;
 }
 
 /* Menú hamburguesa */
 .menu-toggle {
-  display: none; /* Ocultamos el menú hamburguesa por defecto */
+  display: none;
   flex-direction: column;
   cursor: pointer;
 }
@@ -49,210 +59,235 @@ body, html {
   height: 3px;
   width: 25px;
   margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Transformación de las barras al activar el menú */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 @media screen and (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+  
   .nav-left {
-    display: none; /* Oculta los enlaces en pantallas pequeñas */
+    display: none;
     width: 100%;
     flex-direction: column;
     text-align: center;
+    padding-top: 10px;
+  }
+  
+  .nav-left li {
+    margin: 10px 0;
   }
 
   .navbar.active .nav-left {
-    display: flex; /* Muestra el menú cuando se activa */
+    display: flex;
   }
 
   .menu-toggle {
-    display: flex; /* Muestra el menú hamburguesa */
+    display: flex;
+  }
+  
+  .nav-right {
+    margin-right: 50px;
   }
 }
 
-
-
 .nav-right {
   display: flex;
-  align-items: center; /* Centra verticalmente los iconos */
+  align-items: center;
 }
 
 /* Iconos sociales */
 .social-icon {
   display: inline-block;
-  width: 24px; /* Tamaño del icono */
+  width: 24px;
   height: 24px;
-  margin-left: 15px; /* Espaciado entre iconos */
-  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  margin-left: 15px;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: background-image 0.3s; /* Transición suave */
+  transition: background-image 0.3s;
 }
 
 .social-icon-facebook {
-  background-image: url('../images/facebook-icon.png'); /* Imagen predeterminada */
+  background-image: url('../images/facebook-icon.png');
 }
 
 .social-icon-facebook:hover {
-  background-image: url('../images/facebook-blue.png'); /* Imagen al pasar el ratón */
+  background-image: url('../images/facebook-blue.png');
 }
 
 .social-icon-insta {
-  background-image: url('../images/instagram-icon.png'); /* Imagen predeterminada */
+  background-image: url('../images/instagram-icon.png');
 }
 
 .social-icon-insta:hover {
-  background-image: url('../images/insta-pink.png'); /* Imagen al pasar el ratón */
+  background-image: url('../images/insta-pink.png');
 }
 
-
+/* Main content container */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
 /* Sección de héroe */
 .hero {
-height: 88vh; /* Ocupa toda la altura de la ventana */
-width: 100%; /* Ocupa todo el ancho */
-position: relative; /* Necesario para posicionar las imágenes */
-background-color: white; /* Fondo blanco para el resto del espacio */
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-color: black; /* Cambiamos el color del texto para que contraste con el fondo blanco */
-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Suavizamos la sombra del texto */
-/* padding-top: 20px; */
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .hero h1 {
-font-size: 3rem;
+  font-size: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
 }
 
 /* Contenedor para las imágenes */
 .image-fade-container {
-position: absolute; /* Posiciona las imágenes una sobre otra */
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Imágenes */
 .image {
-position: absolute;
-width: 100%;
-height: 100%;
-background-size: cover; /* Ajusta la imagen al contenedor */
-background-position: center; /* Centra la imagen */
-background-repeat: no-repeat;
-opacity: 0; /* Inicialmente no visible */
-animation: fade 20s infinite; /* Ciclo de animación */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: fade 20s infinite;
 }
 
 /* Primera imagen */
 .image1 {
-background-image: url('../images/banner-deputacion.png'); /* Ruta de la primera imagen */
-animation-delay: 0s; /* Empieza inmediatamente */
+  background-size: contain;
+  background-image: url('../images/banner-deputacion.png');
+  animation-delay: 0s;
 }
-
-
 
 /* Segunda imagen */
 .image2 {
-  background-image: url('../images/fotofamilia.jpg'); /* Ruta de la segunda imagen */
-  background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  animation-delay: 10s; /* Comienza cuando la primera está en el centro del ciclo */
-  }
-  
+  background-image: url('../images/fotofamilia.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation-delay: 10s;
+}
 
-
-  @media screen and (max-width: 768px) {
-/* Primera imagen */
-.image1 {
-  background-image: url('../images/logo-esgaes.jpg'); /* Ruta de la primera imagen */
-  background-size: 70%; /* Imagen al 40% de su tamaño original */
-  animation-delay: 0s; /* Empieza inmediatamente */
+@media screen and (max-width: 768px) {
+  /* Primera imagen */
+  .image1 {
+    background-image: url('../images/logo-esgaes.jpg');
+    background-size: 70%;
+    animation-delay: 0s;
   }
-  
-  
   
   /* Segunda imagen */
   .image2 {
-  background-image: url('../images/movil-2.jpg'); /* Ruta de la segunda imagen */
-  background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  animation-delay: 5s; /* Comienza cuando la primera está en el centro del ciclo */
-  filter: grayscale(100%);
-  
-  }
-  
-  /* Segunda imagen */
-  .image3 {
-    background-image: url('../images/movil-3.jpg'); /* Ruta de la segunda imagen */
-    background-size: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    animation-delay: 10s; /* Comienza cuando la primera está en el centro del ciclo */
+    background-image: url('../images/movil-2.jpg');
+    background-size: cover;
+    background-position: center;
+    animation-delay: 5s;
     filter: grayscale(100%);
-    
-    }
   }
   
-  @keyframes fade {
-    0% {
-      opacity: 1; /* Primera imagen visible */
-    }
-    50% {
-      opacity: 0; /* Primera imagen se desvanece */
-    }
-    100% {
-      opacity: 1; /* Vuelve a la primera imagen */
-    }
+  /* Tercera imagen - solo para móvil */
+  .image3 {
+    background-image: url('../images/movil-3.jpg'); 
+    background-size: cover;
+    background-position: center;
+    animation-delay: 10s;
+    filter: grayscale(100%);
   }
-
-
-
-.fondo-direccion {
-  position: relative;
-  width: 100%;
-  height: 88vh;
-  background-image: url('../images/fondo-maestro.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
-.fondo-espazos {
-  position: relative;
-  width: 100%;
-  height: 88vh;
-  background-image: url('../images/chaquetas.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
+.fondo-direccion,
+.fondo-espazos,
 .fondo-contacto {
   position: relative;
   width: 100%;
-  height: 88vh;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fondo-direccion {
+  background-image: url('../images/fondo-maestro.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fondo-espazos {
+  background-image: url('../images/chaquetas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fondo-contacto {
   background-image: url('../images/nenos.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 a {
-  color: inherit; /* Hereda el color del texto circundante */
-  text-decoration: none; /* Elimina el subrayado */
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Contenido principal */
 .contenido {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 20px;
@@ -262,6 +297,32 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 80vh;
+  overflow-y: auto; /* Permite scroll interno si el contenido es muy extenso */
+}
+
+@media screen and (max-width: 768px) {
+  .contenido {
+    padding: 15px;
+    width: 90%;
+    max-height: 80%;
+    font-size: 0.9em;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin: 5px 0;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    margin: 5px 0;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    margin: 5px 0;
+  }
 }
 
 /* Estilo del contenedor del perfil */
@@ -270,25 +331,32 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
-  margin-top: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  width: 100%;
 }
 
 /* Información del director */
 .informacion {
-  flex: 1; /* La lista ocupará el espacio necesario */
-  min-width: 300px; /* Ancho mínimo para evitar que se haga muy pequeño */
+  flex: 1;
+  min-width: 300px;
 }
 
 .informacion-horarios {
-  flex: 1; /* La lista ocupará el espacio necesario */
-  min-width: 300px; /* Ancho mínimo para evitar que se haga muy pequeño */
+  flex: 1;
+  min-width: 300px;
 }
 
+@media screen and (max-width: 768px) {
+  .informacion,
+  .informacion-horarios {
+    min-width: 100%;
+  }
+}
 
 /* Estilo de la imagen */
 .foto {
-  flex: 1; /* La imagen ocupará el espacio restante */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -297,19 +365,31 @@ a {
 .foto img {
   max-width: 80%;
   height: auto;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+  .foto {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .foto img {
+    max-width: 90%;
+  }
 }
 
 /* Lista de esgrima */
 .lista-esgrima {
   list-style-type: none;
   padding-left: 0;
+  margin: 5px 0;
 }
 
 .lista-esgrima li {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
 }
@@ -317,13 +397,22 @@ a {
 .lista-horarios {
   list-style-type: none;
   padding-left: 0;
+  margin: 5px 0;
 }
 
 .lista-horarios li {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .lista-esgrima li,
+  .lista-horarios li {
+    font-size: 0.95em;
+    margin-bottom: 5px;
+  }
 }
 
 .icono {
@@ -333,20 +422,34 @@ a {
 }
 
 .lista-esgrima .espacio-icono {
-  width: 20px; /* Reserva el espacio del icono */
+  width: 20px;
   height: 20px;
-  margin-right: 10px; /* Asegura el mismo espaciado que el icono */
+  margin-right: 10px;
 }
 
 .lista-esgrima li:nth-child(2n) {
-  margin-bottom: 25px; /* Espacio adicional después de cada 2 elementos */
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .lista-esgrima li:nth-child(2n) {
+    margin-bottom: 10px;
+  }
 }
 
 .columnas {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  align-items: flex-start; /* Ensures alignment starts at the top */
+  align-items: flex-start;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .columnas {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .titulo-columna {
@@ -358,9 +461,20 @@ a {
 .subtitulo-columna {
   text-align: left;
   font-size: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
+@media screen and (max-width: 768px) {
+  .titulo-columna {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .subtitulo-columna {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+}
 
 footer {
   background-color: #333333;
@@ -368,24 +482,26 @@ footer {
   text-align: center;
   padding: 10px 20px;
   font-size: 14px;
+  position: relative;
+  flex-shrink: 0; /* Evita que el footer se encoja */
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-between; /* Se distribuyen los elementos de izquierda a derecha */
-  align-items: center; /* Centra los elementos verticalmente */
-  width: 100%; /* Asegura que ocupe todo el espacio disponible */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .footer-logo {
-  width: 40px; /* Ajusta el tamaño de la imagen del logo */
+  width: 40px;
 }
 
 footer p {
-  position: absolute; /* Posiciona el texto independientemente de otros elementos */
-  left: 50%; /* Mueve el texto horizontalmente al centro */
-  transform: translateX(-50%); /* Centra el texto horizontalmente */
-  margin: 0; /* Elimina márgenes del texto */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
 }
 
 .footer-images {
@@ -395,6 +511,36 @@ footer p {
 
 .footer-img {
   color: white;
-  height: 40px; /* Ajusta el tamaño de las imágenes */
-  margin-left: 20px; /* Espacio entre las imágenes */
+  height: 40px;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    padding: 5px 0;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  footer {
+    padding: 8px;
+  }
+  
+  footer p {
+    position: relative;
+    transform: none;
+    left: auto;
+    margin: 5px 0;
+    font-size: 12px;
+  }
+  
+  .footer-images {
+    margin-top: 3px;
+  }
+  
+  .footer-img {
+    height: 25px;
+    margin-left: 8px;
+  }
 }
