@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="fondo-blog">
+  <h1 class="blog-titulo">Blog Escola Galega de Esgrima</h1>
+  
+  {{/* Posts fijados primero */}}
+  {{ range where .Pages "Params.pinned" true }}
+    <article class="blog-post-preview pinned-post">
+      <div class="post-preview-content">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p class="post-meta">{{ .Date.Format "2 January 2006" }}</p>
+        <p class="post-summary">{{ .Summary }}</p>
+        <a href="{{ .Permalink }}" class="read-more">Ler máis →</a>
+      </div>
+    </article>
+  {{ end }}
+  
+  {{/* Posts normales */}}
+  {{ range where .Pages "Params.pinned" "!=" true }}
+    <article class="blog-post-preview">
+      <div class="post-preview-content">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p class="post-meta">{{ .Date.Format "2 January 2006" }}</p>
+        <p class="post-summary">{{ .Summary }}</p>
+        <a href="{{ .Permalink }}" class="read-more">Ler máis →</a>
+      </div>
+    </article>
+  {{ end }}
+</div>
+{{ end }}

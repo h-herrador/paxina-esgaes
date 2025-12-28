@@ -1,6 +1,14 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <div class="content">
-    {{ .Content }}
-  </div>
+<div class="fondo-blog">
+  <article class="blog-post-single">
+    <div class="post-single-content">
+      <h1>{{ .Title }}</h1>
+      <p class="post-meta">{{ .Date.Format "2 January 2006" }}</p>
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+      <a href="/blog" class="back-link">← Volver ao blog</a>
+    </div>
+  </article>
+</div>
 {{ end }}

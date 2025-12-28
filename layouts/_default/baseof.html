@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<html lang="{{ .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}"{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") }} class="blog-page"{{ end }}></html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "images/logo-club.png" | relURL }}">
   <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 </head>
-<body>
+<body{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") }} class="blog-page"{{ end }}>
   <header>
     <nav class="navbar">
       <div class="menu-toggle" id="menu-toggle">
@@ -25,6 +25,7 @@
         <li><a href="{{ "espazos-e-horarios" | relURL }}">Espazos e horarios</a></li>
         <li><a href="{{ "direccion" | relURL }}">Dirección técnica</a></li>
         <li><a href="{{ "contacto" | relURL }}">Contacto</a></li>
+        <li><a href="{{ "blog" | relURL }}">Blog</a></li>
       </ul>
       <div class="nav-right">
         <a href="https://www.instagram.com/escolagalegadeesgrima/" target="_blank" class="social-icon social-icon-insta" aria-label="Instagram"></a>
