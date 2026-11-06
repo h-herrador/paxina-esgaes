@@ -1,6 +1,6 @@
 ---
 title: "Torneo de miniesgrima"
-date: 2026-10-04
+date: 2026-10-12
 draft: false
 pinned: false
 ---
