@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+{{ $filas := slice }}
+{{ with try (resources.GetRemote "https://hugoherrador.com/arteixo.csv") }}
+  {{ with .Value }}
+    {{ $filas = transform.Unmarshal (dict "targetType" "map") . }}
+  {{ end }}
+{{ end }}
+
+<table>
+  <thead>
+    <tr><th>Nombre</th><th>J1</th><th>J2</th><th>J3</th><th>J4</th><th>J5</th><th>J6</th><th>J7</th><th>J8</th><th>J9</th><th>J10</th><th>J11</th><th>J12</th><th>Total</th></tr>
+  </thead>
+  <tbody>
+    {{ range $filas }}
+      <tr>
+        <td>{{ .Nombre }}</td>
+        <td>{{ .J1 }}</td>
+        <td>{{ .J2 }}</td>
+        <td>{{ .J3 }}</td>
+        <td>{{ .J4 }}</td>
+        <td>{{ .J5 }}</td>
+        <td>{{ .J6 }}</td>
+        <td>{{ .J7 }}</td>
+        <td>{{ .J8 }}</td>
+        <td>{{ .J9 }}</td>
+        <td>{{ .J10 }}</td>
+        <td>{{ .J11 }}</td>
+        <td>{{ .J12 }}</td>
+        <td>{{ .Total }}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>
+
+{{end}}

@@ -36,9 +36,12 @@ name = 'Contacto'
 pageRef = '/contacto'
 weight = 40
 
-
-
 [[menus.main]]
 name = 'Blog'
 pageRef = '/blog'
 weight = 50
+
+[[menus.main]]
+name = 'Ranking Arteixo'
+pageRef = '/ranking'
+weight = 60
