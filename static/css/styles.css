@@ -601,9 +601,7 @@
     }
 
     .blog-post-preview img {
-      display: block;
-      max-width: 100%;
-      height: auto;
+      display: none;
     }
     
     .blog-post-preview h2 {
