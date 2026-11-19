@@ -600,7 +600,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .blog-post-preview  .post-summary img {
+    .blog-post-preview img {
       display: block;
       max-width: 100%;
       height: auto;
