@@ -646,7 +646,7 @@
     }
     
     .read-more:hover {
-      background-color: #333;
+      background-color: #333333;
     }
     
     /* Post individual */
@@ -673,7 +673,7 @@
     }
     
     .post-content {
-      color: #333;
+      color: #333333;
       font-size: 1.1em;
       line-height: 1.8;
       margin: 0;
@@ -771,7 +771,7 @@
     }
     
     .back-link:hover {
-      background-color: #333;
+      background-color: #333333;
     }
     
     /* Responsive */
@@ -824,3 +824,108 @@
         margin-top: 40px;
       }
     }
+
+table.sortable {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.sortable td,
+table.sortable th {
+  text-align: center;
+  padding: 0.125em 0.25em;
+  width: 8em;
+}
+
+table.sortable th {
+  font-weight: bold;
+  border-bottom: thin solid #888;
+  position: relative;
+}
+
+table.sortable th.no-sort {
+  padding-top: 0.35em;
+}
+
+table.sortable th:nth-child(5) {
+  width: 10em;
+}
+
+table.sortable th button {
+  padding: 4px;
+  margin: 1px;
+  font-size: 100%;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  display: inline;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+
+table.sortable th button span {
+  position: absolute;
+  right: 4px;
+}
+
+table.sortable td.num {
+  text-align: right;
+}
+
+
+/* Focus and hover styling */
+
+table.sortable th button:focus,
+table.sortable th button:hover {
+  padding: 2px;
+  border: 2px solid currentcolor;
+}
+
+table.sortable th button:focus span,
+table.sortable th button:hover span {
+  right: 2px;
+}
+
+.ocultar {
+  display: none
+}
+
+select {
+    display: block;
+    margin: 12px auto;
+    padding: 8px 12px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333333;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* scroll ranking */
+html:has(#ranking),
+body:has(#ranking) {
+    height: auto !important;
+    overflow: auto !important;
+}
+
+body:has(#ranking) {
+    display: block !important;
+    min-height: 100vh;
+    padding-top: 53px;
+    padding-bottom: 80px;
+}
+
+body:has(#ranking) main {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    flex: none !important;
+}

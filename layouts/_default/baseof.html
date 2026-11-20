@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}"{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") }} class="blog-page"{{ end }}></html>
+<html lang="{{ .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}"{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") }} class="blog-page"{{ end }}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "images/logo-club.png" | relURL }}">
   <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 </head>
-<body{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") }} class="blog-page"{{ end }}>
+<body{{ if or (eq .Section "blog") (in .RelPermalink "/blog/") (eq .Section "ranking") (in .RelPermalink "/ranking/") }} class="blog-page"{{ end }}>
   <header>
     <nav class="navbar">
       <div class="menu-toggle" id="menu-toggle">

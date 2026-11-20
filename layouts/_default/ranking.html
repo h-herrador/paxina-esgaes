@@ -1,5 +1,7 @@
 {{ define "main" }}
 
+
+<!-- leer csv de ranking -->
 {{ $filas := slice }}
 {{ with try (resources.GetRemote "https://hugoherrador.com/arteixo.csv") }}
   {{ with .Value }}
@@ -7,31 +9,101 @@
   {{ end }}
 {{ end }}
 
-<table>
-  <thead>
-    <tr><th>Nombre</th><th>J1</th><th>J2</th><th>J3</th><th>J4</th><th>J5</th><th>J6</th><th>J7</th><th>J8</th><th>J9</th><th>J10</th><th>J11</th><th>J12</th><th>Total</th></tr>
-  </thead>
-    <tbody>
-      {{ range after 1 $filas }}
-        <tr>
-          <td>{{ index . 0 }}</td>
-          <td>{{ index . 1 }}</td>
-          <td>{{ index . 2 }}</td>
-          <td>{{ index . 3 }}</td>
-          <td>{{ index . 4 }}</td>
-          <td>{{ index . 5 }}</td>
-          <td>{{ index . 6 }}</td>
-          <td>{{ index . 7 }}</td>
-          <td>{{ index . 8 }}</td>
-          <td>{{ index . 9 }}</td>
-          <td>{{ index . 10 }}</td>
-          <td>{{ index . 11 }}</td>
-          <td>{{ index . 12 }}</td>
-          <td>{{ index . 13 }}</td>
-        </tr>
-      {{ end }}
-    </tbody>
 
+
+<!-- leer csv de tiradores y categorías -->
+{{ $tiradores := slice }}
+{{ with try (resources.GetRemote "https://hugoherrador.com/tiradores.csv") }}
+  {{ with .Value }}
+    {{ $tiradores = transform.Unmarshal (dict "targetType" "map") . }}
+  {{ end }}
+{{ end }}
+
+
+
+<select id="selector-categoria" onchange="filtrarCategoria()">
+  <option value="M11">M11</option>
+  <option value="M13">M13</option>
+  <option value="M15">M15</option>
+  <option value="M17">M17</option>
+  <option value="ABS" selected>ABS</option>
+</select>
+
+
+<table id="tabla-tiradores" class="ocultar">
+  <thead>
+    <tr>
+      <th>Tirador</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range $tiradores }}
+      {{ if gt (len .Tirador) 0 }}
+      <tr>
+        <td>{{ .Tirador }}</td>
+        {{ if eq .Categoría "M11" }}
+          <td>1</td>
+        {{ else if eq .Categoría "M13" }}
+          <td>2</td>
+        {{ else if eq .Categoría "M15" }}
+          <td>3</td>
+        {{ else if eq .Categoría "M17" }}
+          <td>4</td>
+        {{ else if eq .Categoría "ABS" }}
+          <td>5</td>
+        {{ end }}
+      </tr>
+      {{ end }}
+    {{ end }}
+  </tbody>
 </table>
 
-{{end}}
+
+
+<table id="ranking" class="sortable">
+  <thead>
+    <tr>
+      <th><button onclick="sortTable(0, 'asc')">Nombre<span></span></button></th>
+      <!-- <th><button onclick="sortTable(1, 'desc')">J1<span></span></button></th>  -->
+      <!-- <th><button onclick="sortTable(2, 'desc')">J2<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(3, 'desc')">J3<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(4, 'desc')">J4<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(5, 'desc')">J5<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(6, 'desc')">J6<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(7, 'desc')">J7<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(8, 'desc')">J8<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(9, 'desc')">J9<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(10, 'desc')">J10<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(11, 'desc')">J11<span></span></button></th> -->
+      <!-- <th><button onclick="sortTable(12, 'desc')">J12<span></span></button></th> -->
+      <th><button onclick="sortTable(-1, 'desc')">Total<span></span></button></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range $filas }}
+      {{ if gt (len .Nombre) 0 }}
+      <tr>
+        <td>{{ .Nombre }}</td>
+        <!-- <td>{{ .J1 }}</td> -->
+        <!-- <td>{{ .J2 }}</td> -->
+        <!-- <td>{{ .J3 }}</td> -->
+        <!-- <td>{{ .J4 }}</td> -->
+        <!-- <td>{{ .J5 }}</td> -->
+        <!-- <td>{{ .J6 }}</td> -->
+        <!-- <td>{{ .J7 }}</td> -->
+        <!-- <td>{{ .J8 }}</td> -->
+        <!-- <td>{{ .J9 }}</td> -->
+        <!-- <td>{{ .J10 }}</td> -->
+        <!-- <td>{{ .J11 }}</td> -->
+        <!-- <td>{{ .J12 }}</td> -->
+        <td>{{ .Total }}</td>
+      </tr>
+      {{ end }}
+    {{ end }}
+  </tbody>
+</table>
+
+
+<script src="{{ "js/ranking.js" | relURL }}"></script>
+{{ end }}
